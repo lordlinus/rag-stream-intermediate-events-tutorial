@@ -13,7 +13,7 @@ from app.settings import init_settings
 
 app = FastAPI()
 
-init_settings()
+# init_settings()
 
 environment = os.getenv("ENVIRONMENT", "dev")  # Default to 'development' if not set
 
@@ -27,10 +27,10 @@ if environment == "dev":
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
-        expose_headers=[ "X-Experimental-Stream-Data"],
+        expose_headers=["X-Experimental-Stream-Data"],
     )
 
-app.include_router(chat_router, prefix="/api/chat")
+app.include_router(chat_router, prefix="/api/chatv2")
 
 
 if __name__ == "__main__":
